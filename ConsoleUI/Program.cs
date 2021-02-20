@@ -28,7 +28,7 @@ namespace ConsoleUI
             car1.CarName = "Updatedtest";
             carManager.Update(car1);
 
-            var wreadCar = carManager.GetById(car1.Id);
+            var wreadCar = carManager.GetById(car1.Id).Data;
             Console.WriteLine(wreadCar.Id + " -- " + wreadCar.CarName + " -- " + wreadCar.BrandId + " -- " + wreadCar.ColorId + " -- " + wreadCar.ModelYear + " -- " + wreadCar.DailyPrice + " -- " + wreadCar.Description);
             carManager.Delete(car1);
             ListedCar(carManager);
@@ -70,7 +70,7 @@ namespace ConsoleUI
         private static void ListedColor(ColorManager colorManager)
         {
             Console.WriteLine("\n \n \n \n************************************* \n\n\n");
-            foreach (var color in colorManager.GetAll())
+            foreach (var color in colorManager.GetAll().Data)
             {
                 Console.WriteLine(color.Id + " -- " + color.Name);
             }
@@ -79,7 +79,7 @@ namespace ConsoleUI
         private static void ListedBrand(BrandManager brandManager)
         {
             Console.WriteLine("\n \n \n \n************************************* \n\n\n");
-            foreach (var brand in brandManager.GetAll())
+            foreach (var brand in brandManager.GetAll().Data)
             {
                 Console.WriteLine(brand.Id + " -- " + brand.Name);
             }
@@ -89,7 +89,7 @@ namespace ConsoleUI
         {
             Console.WriteLine("\n \n \n \n************************************* \n\n\n");
             Console.WriteLine("ID -- Car Name -- Brand -- Color -- Model -- Daily Price -- Description");
-            foreach (var car in carManager.GetAll())
+            foreach (var car in carManager.GetAll().Data)
             {
                 Console.WriteLine(car.Id + " -- " + car.CarName + " -- " + car.BrandId + " -- " + car.ColorId + " -- " + car.ModelYear + " -- " + car.DailyPrice + " -- " + car.Description);
             }
@@ -99,7 +99,7 @@ namespace ConsoleUI
         {
             Console.WriteLine("\n \n \n \n************************************* \n\n\n");
             Console.WriteLine("ID -- Car Name -- Brand -- Color -- Model -- Daily Price -- Description");
-            foreach (var car in carManager.GetCarDetails())
+            foreach (var car in carManager.GetCarDetails().Data)
             {
                 Console.WriteLine(car.CarName + " -- " + car.BrandName + " -- " + car.ColorName + " -- " + car.ModelYear + " -- " + car.DailyPrice + " -- " + car.Description);
             }
