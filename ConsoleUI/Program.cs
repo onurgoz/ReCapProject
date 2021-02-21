@@ -44,7 +44,7 @@ namespace ConsoleUI
             brandManager.Add(brand1);
             ListedBrand(brandManager);
             brand1.Name = "Martin";
-            brandManager.update(brand1);
+            brandManager.Update(brand1);
             brandManager.GetById(brand1.Id);
             ListedBrand(brandManager);
             brandManager.Delete(brand1);
@@ -60,7 +60,7 @@ namespace ConsoleUI
             colorManager.Add(brand1);
             ListedColor(colorManager);
             brand1.Name = "Slate Blue";
-            colorManager.update(brand1);
+            colorManager.Update(brand1);
             colorManager.GetById(brand1.Id);
             ListedColor(colorManager);
             colorManager.Delete(brand1);
