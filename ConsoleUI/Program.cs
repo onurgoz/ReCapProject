@@ -14,8 +14,35 @@ namespace ConsoleUI
             //CarTested();
             //ColorTested();
             //BrandTested();
-
+            //UserTested();
+            CustomerTested();
         }
+
+        private static void CustomerTested()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+
+            customerManager.Add(new Customer { UserId = 2, CompanyName = "CompanyName1" });
+            customerManager.Add(new Customer { UserId = 3, CompanyName = "CompanyName2" });
+            customerManager.Add(new Customer { UserId = 4, CompanyName = "CompanyName3" });
+            customerManager.Add(new Customer { UserId = 5, CompanyName = "CompanyName4" });
+
+            ListedCustomer(customerManager);
+        }
+
+        private static void UserTested()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+
+            userManager.Add(new User { FirstName = "FirstName1", LastName = "LastName1", Email = "deneme1@gmail.com", Password = "123" });
+            userManager.Add(new User { FirstName = "FirstName2", LastName = "LastName2", Email = "deneme1@gmail.com", Password = "123" });
+            userManager.Add(new User { FirstName = "FirstName3", LastName = "LastName3", Email = "deneme1@gmail.com", Password = "123" });
+            userManager.Add(new User { FirstName = "Onur", LastName = "Göz", Email = "onurgoz98@gmail.com", Password = "1" });
+
+            ListedUser(userManager);
+            
+        }
+
         private static void CarTested()
         {
             CarManager carManager = new CarManager(new EfCarDal());
@@ -73,6 +100,24 @@ namespace ConsoleUI
             foreach (var color in colorManager.GetAll().Data)
             {
                 Console.WriteLine(color.Id + " -- " + color.Name);
+            }
+            Console.WriteLine("\n \n \n \n************************************* \n\n\n");
+        }
+        private static void ListedUser(UserManager userManager)
+        {
+            Console.WriteLine("\n \n \n \n************************************* \n\n\n");
+            foreach (var user in userManager.GetAll().Data)
+            {
+                Console.WriteLine(user.Id + " -- " + user.FirstName+ " -- "+user.LastName);
+            }
+            Console.WriteLine("\n \n \n \n************************************* \n\n\n");
+        }
+        private static void ListedCustomer(CustomerManager customerManager)
+        {
+            Console.WriteLine("\n \n \n \n************************************* \n\n\n");
+            foreach (var customer in customerManager.GetAll().Data)
+            {
+                Console.WriteLine(customer.UserId + " -- " + customer.CompanyName);
             }
             Console.WriteLine("\n \n \n \n************************************* \n\n\n");
         }

@@ -18,14 +18,15 @@ namespace Business.Constants
         internal static string SuccessColorAdded = "Color Added";
         internal static string SuccessColorDeleted = "Color Deleted";
         internal static string SuccessColorUpdated = "Color Updated";
-        internal static string SuccessUserAdded;
-        internal static string SuccessUserDeleted;
-        internal static string SuccessUserUpdated;
-        internal static string SuccessCustomerDeleted;
-        internal static string SuccessCustomerAdded;
-        internal static string SuccessCustomerUpdated;
-        internal static string SuccessRentalDeleted;
-        internal static string SuccessRentalAdded;
-        internal static string SuccessRentalUpdated;
+        internal static string SuccessUserAdded="";
+        internal static string SuccessUserDeleted = "";
+        internal static string SuccessUserUpdated="";
+        internal static string SuccessCustomerDeleted="";
+        internal static string SuccessCustomerAdded="";
+        internal static string SuccessCustomerUpdated="";
+        internal static string SuccessRentalDeleted="";
+        internal static string SuccessRentalAdded="";
+        internal static string SuccessRentalUpdated="";
+        internal static string ErrorCarReturnDate="";
     }
 }
