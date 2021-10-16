@@ -10,6 +10,7 @@ using Entites.Concrete;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using Business.BussinessAspect.Autofac;
 
 namespace Business.Concrete
 {
@@ -47,20 +48,8 @@ namespace Business.Concrete
 
             _carImageDal.Add(carImage);
 
-            return new SuccessResult();
+            return new SuccessResult(Messages.CarImageAdded);
         }
-
-        public IResult GetCarImagerCount(int carId)
-        {
-            var result = _carImageDal.GetAll(c => c.CarId == carId).Count;
-            if (result >= 5)
-            {
-                return new ErrorResult();
-            }
-            return new SuccessResult();
-        }
-
-
 
         public IDataResult<List<CarImage>> GetAllByCarId(int id)
         {
@@ -79,7 +68,7 @@ namespace Business.Concrete
             }
             return new SuccessDataResult<List<CarImage>>(result);
         }
-
+        [SecuredOperation("admin,car.getall")]
         public IDataResult<List<CarImage>> GetAll()
         {
             return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll());
@@ -94,7 +83,7 @@ namespace Business.Concrete
             var deleteOldImageAndUpdate = FileUpload.Update(formFile, resultImagePath.Data);
             if (!deleteOldImageAndUpdate.Success)
                 return deleteOldImageAndUpdate;
-
+            carImage.Date=DateTime.Now;
             carImage.ImagePath = deleteOldImageAndUpdate.Data;
             _carImageDal.Update(carImage);
 
@@ -132,7 +121,7 @@ namespace Business.Concrete
             if (carImage == null)
                 return new ErrorDataResult<string>(Messages.CarImageNotFound, Messages.CarImageNotFound);
 
-            return new SuccessDataResult<string>(carImage.ImagePath);
+            return new SuccessDataResult<string>(carImage.ImagePath,Messages.CarImageObtained);
         }
     }
 }

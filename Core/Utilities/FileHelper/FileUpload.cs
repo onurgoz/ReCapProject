@@ -39,19 +39,19 @@ namespace Core.Utilities.FileHelper
             if (formFile == null || !File.Exists($@"{path}\{oldImagePath}"))
                 return new ErrorDataResult<string>("Dosya mevcut değil");
 
-            DeleteOldImageFile(oldImagePath);
+            Delete(oldImagePath);
             CheckPathExists(path);
 
             string fileName = CreateNewFileName(formFile.FileName);
             CreateImageFileByName(formFile, fileName);
-            return new SuccessDataResult<string>(Path.Combine(path, fileName));
+            return new SuccessDataResult<string>(fileName);
         }
 
-        public static IResult Delete(string path)
+        public static IResult Delete(string imagePath)
         {
             try
             {
-                File.Delete(path);
+                File.Delete($@"{path}\{imagePath}");
                 return new SuccessResult();
             }
             catch (Exception exception)
@@ -95,9 +95,6 @@ namespace Core.Utilities.FileHelper
                 Directory.CreateDirectory(path);
         }
 
-        private static void DeleteOldImageFile(string path)
-        {
-            File.Delete(path.Replace("/", "\\"));
-        }
+        
     }
 }
